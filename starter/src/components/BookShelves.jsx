@@ -66,12 +66,12 @@ function BookShelves() {
       <div className="list-books-content">
         <div>
           {bookshelfs.map((bookshelf) => (
-            <div className="bookshelf">
+            <div className="bookshelf" key={bookshelf.title}>
               <h2 className="bookshelf-title">{bookshelf.title}</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
                   {bookshelf.books.map((book) => (
-                    <li>
+                    <li key={book.title}>
                       <div className="book">
                         <div className="book-top">
                           <div
