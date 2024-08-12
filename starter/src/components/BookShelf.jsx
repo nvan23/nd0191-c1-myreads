@@ -1,4 +1,12 @@
-function BookShelf({ title, books }) {
+function BookShelf({ title, books, moveBook }) {
+  const handleBookShelfChange = (event, book) => {
+    const selectedValue = event.target.value;
+
+    if (book.shelf !== selectedValue) {
+      moveBook(book, selectedValue);
+    }
+  };
+
   return (
     <div className="bookshelf" key={title}>
       <h2 className="bookshelf-title">{title}</h2>
@@ -17,7 +25,10 @@ function BookShelf({ title, books }) {
                     }}
                   ></div>
                   <div className="book-shelf-changer">
-                    <select>
+                    <select
+                      value="none"
+                      onChange={(event) => handleBookShelfChange(event, book)}
+                    >
                       <option value="none" disabled>
                         Move to...
                       </option>
