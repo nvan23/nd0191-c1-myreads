@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import * as BooksAPI from "../BooksAPI";
-import BookShelf from './BookShelf';
-import { CATEGORIES } from '../constants/categories.constants';
+import BookShelf from "./BookShelf";
+import { CATEGORIES } from "../constants/categories.constants";
 
 function BookShelves() {
-  const [currentlyReadingShelf, setCurrentlyReadingShelf] = useState([]);
-  const [wantToReadShelf, setWantToReadShelf] = useState([]);
-  const [readShelf, setReadShelf] = useState([]);
+  const [currentlyReadingBooks, setCurrentlyReadingBooks] = useState([]);
+  const [wantToReadBooks, setWantToReadBooks] = useState([]);
+  const [readBooks, setReadBooks] = useState([]);
 
   useEffect(() => {
     const getAllBooks = async () => {
       const res = await BooksAPI.getAll();
-      console.log(res)
+      console.log(res);
       const currentlyReadingShelfApiData = [];
       const wantToReadShelfApiData = [];
       const readShelfApiData = [];
@@ -21,24 +21,23 @@ function BookShelves() {
       if (res?.length) {
         res.forEach((book) => {
           if (book.shelf === "currentlyReading") {
-            currentlyReadingShelfApiData.push(book)
+            currentlyReadingShelfApiData.push(book);
           }
-          
+
           if (book.shelf === "wantToRead") {
-            wantToReadShelfApiData.push(book)
+            wantToReadShelfApiData.push(book);
           }
-          
+
           if (book.shelf === "read") {
-            readShelfApiData.push(book)
+            readShelfApiData.push(book);
           }
         });
 
-        setCurrentlyReadingShelf(currentlyReadingShelfApiData);
-        setWantToReadShelf(wantToReadShelfApiData);
-        setReadShelf(readShelfApiData);
-
+        setCurrentlyReadingBooks(currentlyReadingShelfApiData);
+        setWantToReadBooks(wantToReadShelfApiData);
+        setReadBooks(readShelfApiData);
       }
-    }
+    };
 
     getAllBooks();
   }, []);
@@ -49,9 +48,12 @@ function BookShelves() {
         <h1>MyReads</h1>
       </div>
       <div className="list-books-content">
-          <BookShelf title={CATEGORIES.CURRENTLY_READING} books={currentlyReadingShelf} />
-          <BookShelf title={CATEGORIES.WANT_TO_READ} books={wantToReadShelf} />
-          <BookShelf title={CATEGORIES.READ} books={readShelf} />
+        <BookShelf
+          title={CATEGORIES.CURRENTLY_READING}
+          books={currentlyReadingBooks}
+        />
+        <BookShelf title={CATEGORIES.WANT_TO_READ} books={wantToReadBooks} />
+        <BookShelf title={CATEGORIES.READ} books={readBooks} />
       </div>
 
       <Link className="open-search" to="/search">
