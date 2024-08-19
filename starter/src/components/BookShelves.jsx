@@ -13,7 +13,6 @@ function BookShelves() {
   useEffect(() => {
     const getAllBooks = async () => {
       const res = await BooksAPI.getAll();
-      console.log(res);
       const currentlyReadingShelfApiData = [];
       const wantToReadShelfApiData = [];
       const readShelfApiData = [];
