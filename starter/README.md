@@ -22,9 +22,15 @@ To get started developing right away:
 │   ├── favicon.ico # React Icon, You may change if you wish.
 │   └── index.html # DO NOT MODIFY
 └── src
+    ├── components
+    │   ├── App.jsx # This is the root of your app. Handle routing to child components
+    │   ├── BookGrid.jsx # Handle rendering book grid
+    │   ├── BookSearcher.jsx # Handle rendering book searching and show results with BookGrid
+    │   ├── BookShelf.jsx # Handle rendering book shelf with book shelf title and a list of books
+    │   └── BookShelves.jsx # Handle rendering a list of book shelfs, move book between shelves
+    ├── constants
+    │   └── categories.constants.js # Centralize constants for shelf categories
     ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
     ├── icons # Helpful images for your app. Use at your discretion.
     │   ├── add.svg
